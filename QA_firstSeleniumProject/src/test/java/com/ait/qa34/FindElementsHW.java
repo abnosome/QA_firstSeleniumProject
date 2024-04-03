@@ -2,6 +2,7 @@ package com.ait.qa34;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -34,9 +35,34 @@ public class FindElementsHW {
         System.out.println(elements3.size());
     }
 
-    @AfterMethod
+    @Test
+    public void findElementByCssSelector() {
 
+        driver.findElement(By.cssSelector("#subscribe-loading-progress"));
+        driver.findElement(By.cssSelector("#newsletter-subscribe-block"));
+        driver.findElement(By.cssSelector(".listbox"));
+        driver.findElement(By.cssSelector("[href='/register']"));
+        driver.findElement(By.cssSelector("[href*='cart']"));
+        driver.findElement(By.cssSelector("[href^='/log']"));
+        driver.findElement(By.cssSelector("[href$='shoes']"));
+    }
+
+    @Test
+    public void findElementByXpath() {
+        driver.findElement(By.xpath("//*[@id='subscribe-loading-progress']"));
+        driver.findElement(By.xpath("//*[@id='newsletter-subscribe-block']"));
+        driver.findElement(By.xpath("//*[@class='listbox']"));
+        driver.findElement(By.xpath("//*[@href='/register']"));
+        driver.findElement(By.xpath("//*[contains(@href, 'cart')]"));
+        driver.findElement(By.xpath("//*[starts-with(@href, '/log')]"));
+        driver.findElement(By.xpath("//*[substring(@href, string-length(@href) - string-length('shoes') +1) = 'shoes']"));
+
+
+    }
+
+    @AfterMethod
     public  void tearDow(){
         driver.quit();
     }
+
 }
