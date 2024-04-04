@@ -30,6 +30,7 @@ public class TestBase {
     @AfterMethod(enabled = false)
     public  void tearDow(){
         driver.quit();
+        
     }
 
     public void type(By locator, String text) {
