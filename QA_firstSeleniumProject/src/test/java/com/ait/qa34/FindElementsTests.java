@@ -45,6 +45,7 @@ public class FindElementsTests {
     @Test
     public void findElementByCssSelector() {
         //id -> #id
+
         // driver.findElement(By.id("city"));
         driver.findElement(By.cssSelector("#city"));
         //class name -> .className
