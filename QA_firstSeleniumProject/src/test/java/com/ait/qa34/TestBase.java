@@ -15,6 +15,7 @@ public class TestBase {
 
     WebDriver driver;
 
+
     @BeforeMethod
     public void setUp(){
         driver = new ChromeDriver();
@@ -30,7 +31,7 @@ public class TestBase {
     @AfterMethod(enabled = false)
     public  void tearDow(){
         driver.quit();
-        
+
     }
 
     public void type(By locator, String text) {
@@ -49,5 +50,37 @@ public class TestBase {
             return false;
         }
         return true;
+    }
+
+    public void fillRegisterForm() {
+        type(By.name("FirstName"), "Mikghail");
+        type(By.name("LastName"), "Lovgfe");
+        type(By.name("Email"), "martaLgovef@gm.com");
+
+        type(By.id("Password"), "1234Figa!");
+        type(By.id("ConfirmPassword"), "1234Figa!");
+    }
+
+    public void clickOnRegisterButton() {
+        click(By.id("register-button"));
+    }
+
+    public void clickOnRegisterLink() {
+        click(By.cssSelector("[href='/register']"));
+    }
+
+    protected void login() {
+        click(By.cssSelector("[href='/login']"));
+        type(By.name("Email"), "martaLgovef@gm.com");
+        type(By.id("Password"), "1234Figa!");
+        click(By.cssSelector(".button-1.login-button"));
+    }
+
+    protected void goToCart() {
+        click(By.cssSelector("[href='/cart']"));
+    }
+
+    public void AddItem() {
+        click(By.cssSelector("div.item-box:nth-child(3) input.button-2.product-box-add-to-cart-button"));
     }
 }
